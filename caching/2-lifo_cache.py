@@ -1,9 +1,14 @@
-"""Lifo cache module"""
+"""
+Lifo cache module
+"""
 from base_caching import BaseCaching
 
 
 class LIFOCache(BaseCaching):
-"""Lifo Class """
+    """
+    Lifo Class
+    """
+
     def __init__(self):
         """ initilize"""
         super().__init__()
