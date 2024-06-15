@@ -28,4 +28,4 @@ class LIFOCache(BaseCaching):
 
     def get(self, key):
         """ method get for get value with key"""
-        return self.cache_data.get(key)
+        return self.cache_data.get(key,None)
