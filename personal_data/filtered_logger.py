@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 import re
 from typing import List
+"""
+Filter
+
+"""
 
 
 def filter_datum(fields: List[str], redaction: str,
