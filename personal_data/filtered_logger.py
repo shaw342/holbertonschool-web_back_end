@@ -7,9 +7,11 @@ Filter
 import re
 from typing import List
 import logging
+import os
+import mysql.connector
 
 
-PII_FIELDS = ("email", "password", "phone", "ssn", "name")
+PII_FIELDS = ("email", "password", "phone", "ssn", "ip")
 
 
 def filter_datum(fields: List[str], redaction: str,
@@ -60,3 +62,23 @@ def get_logger() -> logging.Logger:
     logger.addHandler(stream_handler)
 
     return logger
+
+
+def get_db() -> mysql.connector.connection.MySQLConnection:
+    """
+    fuction connect to database
+    """
+
+    user = os.getenv("PERSONAL_DATA_DB_USERNAME", "root")
+    password = os.getenv("PERSONAL_DATA_DB_PASSWORD", "")
+    host = os.getenv("PERSONAL_DATA_DB_HOST", "localhost")
+    db_name = os.getenv("PERSONAL_DATA_DB_NAME", "my_db")
+
+    conn = mysql.connector.connect(
+            host=host,
+            user=user,
+            password=password,
+            db_name=db_name
+    )
+
+    return conn
