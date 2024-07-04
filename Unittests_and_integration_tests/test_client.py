@@ -48,7 +48,7 @@ class TestGithubOrgClient(unittest.TestCase):
         mocked_get_json.return_value = expected_repos_payload
 
         with patch('client.GithubOrgClient._public_repos_url',
-                   new_callable=PropertyMock) as mocked_public_repos_url:
+                new_callable=PropertyMock) as mocked_public_repos_url:
             mocked_public_repos_url.return_value = mock_repos_url
 
             gh_client = GithubOrgClient("google")
@@ -70,7 +70,7 @@ class TestGithubOrgClient(unittest.TestCase):
 
 
 @parameterized_class(('org_payload', 'repos_payload',
-                      'expected_repos', 'apache2_repos'), TEST_PAYLOAD)
+            'expected_repos', 'apache2_repos'), TEST_PAYLOAD)
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     """Integration tests for the GithubOrgClient.public_repos method.
     """
