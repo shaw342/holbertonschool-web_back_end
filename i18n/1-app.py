@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from flask import Flask, render_template
 from flask_babel import Babel
 
@@ -15,7 +16,7 @@ class config:
 app.config(config)
 
 
-@app.route("/")
+@app.route("/", methods=["GET"], strict_slashes=False)
 def home():
     """routet return the templates of homepage"""
     return render_template("./index.html")
