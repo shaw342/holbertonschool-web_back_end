@@ -28,6 +28,7 @@ def welcome() -> str:
     return render_template("1-index.html")
 
 
+@babel.babel.localeselector
 def get_local() -> str:
     """get_local"""
     return request.accept_languages(Config.LANGUAGES)
