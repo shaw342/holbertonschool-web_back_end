@@ -29,9 +29,9 @@ def welcome() -> str:
 
 
 @babel.localeselector
-def get_locale() -> str:
-    """Select the best match language."""
-    return request.accept_languages.best_match(["en", "fr"])
+def get_local() -> str:
+    """get_local"""
+    return request.accept_languages.best_match(Config.LANGUAGES)
 
 
 if __name__ == "__main__":
