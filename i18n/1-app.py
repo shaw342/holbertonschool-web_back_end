@@ -22,7 +22,7 @@ app.config(config)
 @app.route("/", methods=["GET"], strict_slashes=False)
 def home():
     """routet return the templates of homepage"""
-    return render_template("./index.html")
+    return render_template("./1-index.html")
 
 
 if __name__ == "__main__":
