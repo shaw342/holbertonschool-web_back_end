@@ -31,7 +31,7 @@ def welcome() -> str:
 @babel.localeselector
 def get_local() -> str:
     """get_local"""
-    return request.accept_languages(Config.LANGUAGES)
+    return request.accept_languages.best_match(Config.LANGUAGES)
 
 
 if __name__ == "__main__":
