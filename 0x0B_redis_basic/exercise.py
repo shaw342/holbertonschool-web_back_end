@@ -2,9 +2,24 @@
 """
 Cache Module
 """
+from more_itertools import count_cycle
 import redis
 import uuid
 from typing import Union, Optional, Callable
+from functools import wraps
+
+
+def count_calls(method: Callable) -> Callable:
+    """
+    method count how many times methods of
+    the Cache class are called
+    """
+    @wraps(method)
+    def wrapper(*args, **kwargs):
+        key = method.__qualname__
+        self._redis.incr(key)
+        return method(*args, **kwargs)
+    return wrapper
 
 
 class Cache:
@@ -13,6 +28,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """Store the input data in Redis using a random key."""
         key = str(uuid.uuid4())
