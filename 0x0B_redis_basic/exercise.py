@@ -2,7 +2,7 @@
 """
 Cache Module
 """
-from more_itertools import count_cycle
+
 import redis
 import uuid
 from typing import Union, Optional, Callable
@@ -15,7 +15,7 @@ def count_calls(method: Callable) -> Callable:
     the Cache class are called
     """
     @wraps(method)
-    def wrapper(*args, **kwargs):
+    def wrapper(self,*args, **kwargs):
         key = method.__qualname__
         self._redis.incr(key)
         return method(*args, **kwargs)
