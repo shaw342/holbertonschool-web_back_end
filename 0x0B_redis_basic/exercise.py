@@ -70,7 +70,7 @@ class Cache:
     def get_str(self, key: str) -> str:
         """methode get_str return str"""
         return self._redis.get(key, fn=lambda d: d.docode("utf-8"))
-    
+
     def replay(self, method: Callable):
         """ Display the history of calls of a particular function."""
 
@@ -83,5 +83,6 @@ class Cache:
 
         print(f"{method_name} was called {len(inputs_list)} times:")
         for input_str, output_str in zip(inputs_list, outputs_list):
-            print(f"{method_name}(*{input_str.decode('utf-8')}) ->
-                  {output_str.decode('utf-8')}")
+            print(f"{method_name}\
+                (*{input_str.decode('utf-8')}\
+                    ) -> {output_str.decode('utf-8')}")
