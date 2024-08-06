@@ -20,7 +20,11 @@ class Cache:
         return key
 
     def get(self, key: str, fn: Optional[Callable]
+            = None
             ) -> Union[str, int, float, bytes]:
+        """
+        methode get return without argument
+        """
         value = self._redis.get(key)
         if value is not None and fn:
             return fn(value)
