@@ -83,6 +83,6 @@ class Cache:
 
         print(f"{method_name} was called {len(inputs_list)} times:")
         for input_str, output_str in zip(inputs_list, outputs_list):
-            print(f"{method_name}\
-                (*{input_str.decode('utf-8')}\
-                    ) -> {output_str.decode('utf-8')}")
+            dec_input = input_str.decode('utf-8')
+            dec_output = output_str.decode('utf-8')
+            print(f"{method_name}(*{dec_input}) -> {dec_output}")
