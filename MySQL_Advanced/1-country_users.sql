@@ -1,12 +1,12 @@
--- Create the 'users' table if it does not already exist
--- 'id' column: auto-incrementing primary key
--- 'email' column: unique and non-null string
--- 'name' column: string
---  country comlum: enum 
+-- Creates a table users following these requirements:
+-- id, integer, never null, auto increment and primary key
+-- email, string (255 characters), never null and unique
+-- name, string (255 characters)
+-- country, enumeration of countries: US, CO and TN, never null (= default will be the first element of the enumeration, here US)
 
 CREATE TABLE IF NOT EXISTS users (
-    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(255) NOT NULL,
-    name VARCHAR(255),
-    country ENUM('US','CO','TN') NOT NULL DEFAULT 'US'
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  name VARCHAR(255),
+  country ENUM('US', 'CO', 'TN') NOT NULL DEFAULT 'US'
 );
